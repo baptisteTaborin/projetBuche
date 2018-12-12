@@ -1,3 +1,90 @@
+/*
+ * Concentre les informations sur les rencontres. Actuellement ne marche qu’avec les 1vs1 avec des scores.
+ * 
+ * 
+a.  init()
+    Initialise l’objet avec deux équipes.
+    i.  Variables d’entrée
+        String Sport
+            Nom du sport
+        String typeMatch
+            Type de match : « Trente-deuxième de finale », « Seizième de finale », « Huitième de finale », « Quart de finale », « Demi-finale », « Finale », « Petite finale » ou « poule »
+        Int [9] liste Durées des matchs (en minutes)
+            [durée finale ; durée petite finale ; durée demi-finale ; durée quart de finale ; durée huitième de finale ; durée seizième de finale ; durée trente-deuxième de finale ; durée match de poule ; durée transition]
+    ii. Autres méthodes dans l’objet
+        Méthode phasesFinales()
+
+
+b.  initDate()
+    Implémente la date, n’est pas utilisé actuellement, servira pour la partie planning.
+    i.  Variables d’entrée
+        Int [2] Horaire de début du match
+            [x,y] le match commence à l’heure x, minute y…
+        Int [3] Dates de début du match
+            [x,y,z] le match commence le jour x du mois y de l’année z (le mois est un Int)
+
+
+c.  initClasique()
+    Implémente les deux équipes et récupère le numéro de la poule.
+    i.  Variables d’entrée
+        String equipe1
+        String equipe2
+        Int numeroPoule
+
+
+d.  initEquipeA()
+    Initialise l’équipe A.
+    i.  Variables d’enrée
+        String equipeA
+
+
+e.  initEquipeB()
+    Initialise l’équipe B.
+    i.  Variables d’entrée
+        String equipeB
+
+
+f.  resultatClassique
+    Le résultat dans un match se présente sous forme de liste de listes. Toutes les équipes présente dans une même sous liste sont ex-aequo. Plus le rang dans la liste principale est faible, mieux on est classé. Exemple : si scoreEquipe1 > scoreEquipe2 alors classement = [ [Equipe1] , [Equipe2] ]. En cas d’égalité : classement = [ [Equipe1 , Equipe2] , [ ] ].
+    i.  Variables d’entrée
+        Int scoreEquipe1
+        Int scoreEquipe2
+
+
+g.  initDifferent()
+    Initialise avec une liste de participant. Ne sert à rien pour le moment.
+    i.  Variables d’entrée
+        String [] listeParticipants
+
+
+h.  typeMatch()
+    Change la propriété typeMatch.
+    i.  Variables d’entrée
+        String typeMatch
+        Type de match : « Trente-deuxième de finale », « Seizième de finale », « Huitième de finale », « Quart de finale », « Demi-finale », « Finale », « Petite finale » ou « poule »
+
+
+i.  phasesFinales() 
+    Attribue à un type de phase finale un nombre. (diffère légèrement de celui de tableauxPhasesFinales en ajoutant poule et en différenciant finale de petite finale.
+    Petite finale <-> 1
+    Finale <-> 0
+    Demi-finale <-> 2
+    Quart de finale <-> 3
+    Huitième de finale <-> 4
+    Seizième de finale <-> 5
+    Trente-deuxième de finale <-> 6
+    Poule <-> 7
+i.  Variables d’entrée
+    String premierTourPhasesFi
+    « Trente-deuxième de finale », « Seizième de finale », « Huitième de finale », « Quart de finale », « Demi-finale », « Finale », « Petite finale » ou « poule »
+
+ * 
+ * 
+*/
+
+
+
+
 module.exports = {
 
     //affrontement conventionnel 2 equipes avec des scores

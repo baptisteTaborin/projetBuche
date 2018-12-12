@@ -1,3 +1,35 @@
+
+/*
+ * 
+ * Objet qui gère les tableaux de résultats des différentes poules. Un objet correspond à une poule.
+ * 
+ * 
+a.  init()
+    Initialise le tableau de résultat associé à une poule.
+    i.  Variables d’entrée
+        String [] listeEqupes
+            Nom des équipes dans cette poule.
+    ii. Autres méthodes dans l’objet
+        Méthode constructionVide()
+b.  constructionVide()
+        Construit le tableau vide.
+c.  resultats()
+    Met à jour le tableau en fonction des résultats des matches.
+    i.  Variables d’entrée
+        Objet Match
+    ii. Autres méthodes dans l’objet
+        Méthode classer()
+d.  classer()
+        Calcule le classement au sein de la poule des équipes. D'abord on fait ça au score classique, puis en cas d'égalité goal average. Puis, s'il y a aussi égalité du goal average, on fait ça à celui qui a le plus marqué et s'il y a encore égalité, on prend celui qui a le moins encaissé.
+
+ * 
+ * 
+ * 
+ * 
+*/
+
+
+
 module.exports = {
 
 

@@ -1,3 +1,35 @@
+/*
+ * Objet qui gère les classements intermédiaires et le classement général. Ne s’occupe pas du classement interne à une poule.
+ * 
+ * 
+a.  init()
+    Initialise le classement en différenciant le cas du classement après les poules ou final.
+    i.  Variables d’entrée
+        String type
+            Distingue les classements : « classement final » et « classement general poules »
+        listeTableauxResultats
+            liste des tableaux de résultat des poules.
+        tableauxPhasesFinale
+            Le tableau des phases finales.
+        tableauPetiteFinale
+            Le tableau de la petite finale.
+        classementGeneralApresPoules
+            Le classement après les phases de poules.
+    ii. Autres méthodes dans l’objet
+        Méthode classementGeneralApresPoules
+        Méthode classementFinal()
+
+b.  classementGeneralApresPoules
+    Calcule le classement après les poules. Pour cela on compare les différents résultats marqués dans les tableaux de résultats poules. Par ordre d'importance : Classement dans la poule, points totaux, goal average points marqués, points encaissés, nombre de victoires.
+
+c.  classementFinal()
+    Calcul le classement final après les phases finales, classe les équipes dans les phases finales puis fusionne avec le classement post-poules.
+
+ * 
+ * 
+*/
+
+
 
 module.exports = {
     //On initialise le classement en différanciant le cas du classement après les poules ou final
