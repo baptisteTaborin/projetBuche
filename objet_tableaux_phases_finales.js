@@ -1,8 +1,78 @@
-/*  Tableaux Phases finales : pour remplir les tableaux d'affrontement.
-    premierTourPhasesFi = {Trente-deuxième de finale;Seizième de finale;Huitième de finale;Quart de finale;Demi-finale;Finale}
-        Ce terme sera convertit en chiffre avec nbPhasesFi
-    Poules : objet type Poules qui comprend toutes les poules d'un tournoi
-    listeTableauxResultats : Liste des Tableaux de résultats liés aux différentes Poules
+/* Gère les phases finales en suivant la progression des équipes dans les tableaux.
+ * 
+ * 
+a.  init1()
+    Crée le tableau vide, permet de déterminer le nombre de matches pour créer les objets adéquats.
+    i.  Variables d’entrée
+        String premierTourPhasesFi
+            « Trente-deuxième de finale », « Seizième de finale », « Huitième de finale », « Quart de finale », « Demi-finale »
+        Int nbPoules
+            *Nombre de poules
+        Int nbEquipe
+            Nombre d’équipes
+        String type
+            Permet de différencier un tableau général de celui de la petite finale. « petite finale » ou « normal »
+    ii. Autres méthodes dans l’objet
+        Méthode phasesFinales()
+        Méthode constructionVIde()
+
+
+b.  init2()
+    Remplie la première colonne du tableau à la fin de la phase des poules.
+    i.  Variables d’entrée
+        Tableau classement
+            String typeRemplissage
+                Le code propose pour le moment deux façons de faire : "remplissageTableauPhaseFinaleParClassementGeneral" ou encore «remplissageTableauPhaseFinaleParNumeroPoule".
+                Le premier permet de classer des équipes en faisant un classement après les phases de poules. Une fois fait, le premier va affronter le dernier, le deuxième l’avant dernier etc… En modifiant juste les matches up si les deux équipes viennent de la même poule, on décale alors les curseurs 
+                Le deuxième permet de faire affronter le premier de la poule A contre le deuxième de la poule B et, dans l’autre moitié du tableau, faire affronter le deuxième de la poule A contre le premier de la poule B.
+    ii. Autres méthodes dans l’objet
+        selectionPhaseFinales()
+        remplissageTableauPhaseFinale()
+
+
+c.  remplissageTableauPhaseFinale()
+    Check le type de remplissage souhaité et applique alors la bonne méthode pour répartir les équipes sur la première colonne du tableau des phases finales.
+    i.  Autres méthodes dans l’objet
+        remplissageTableauPhaseFinaleParClassementGeneral()
+        remplissageTableauPhaseFinaleParNumeroPoule()
+
+
+d.  constructionVide()
+        Cree le tableau des phases finales vide. 
+
+
+e.  selectionPhasesFinales()
+        On trie les équipes qualifiées, dans le cas de la petite finale, on regarde celle qui sont en demi-finale mais pas en finale pour désigner les qualifiées. Elle produit un tableau comme le suivant :
+
+
+f.  remplissageTableauPhaseFinaleParClassementGeneral()
+        Remplissage en utilisant le classement général après les poules. On fait affronter les équipes par symétrie et si deux équipes proviennent de la même poule, on décale tout d’un cran.
+
+g.  remplissageTableauPhaseFinaleParNumeroPoule()
+        Remplissage en faisant affronter le premier de la poule A contre le deuxième de la poule B et dans l’autre côté du tableau des affrontements, on fait affronter le premier de la poule B contre le premier de la poule A.
+
+
+h.  resultats()
+    Met à jour le tableau des phases finales en inscrivant le nom des équipes gagnantes sur les colonnes de droite.
+    i.  Variables d’entrée
+        Objet Match
+    ii. Autres méthodes dans l’objet
+        Méthode phasesFinales()
+
+
+i.  phasesFinales()
+    Attribue à un type de phase finale un nombre. 
+        Petite finale <-> 1
+        Finale <-> 1
+        Demi-finale <-> 2
+        Quart de finale <-> 3
+        Huitième de finale <-> 4
+        Seizième de finale <-> 5
+        Trente-deuxième de finale <-> 6
+    i.  Variables d’entrée
+        String premierTourPhasesFi
+            « Trente-deuxième de finale », « Seizième de finale », « Huitième de finale », « Quart de finale », « Demi-finale », « Finale », « Petite finale »
+
 */
 
 

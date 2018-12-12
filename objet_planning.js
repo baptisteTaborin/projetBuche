@@ -1,3 +1,67 @@
+/*
+Encore en chantier, permettra de créer les plannings des matchs en évitant une superposition pour une même équipe. Pour le moment n’est pas fonctionnel. Ne prend pas en compte les différents lieux, la superposition des matches de phases différentes dans les phases finales et le rassemblement des poules dans une zone spatiale et temporelle donnée. Ce n’est qu’une phase du tournoi (s’il est divisé en plusieurs jours)
+
+
+a.  init ()
+    Initialise le planning d’un tournoi.
+    i.  Variables d’entrée
+        Int [3] Date de début de la phase du tournoi
+            [x,y,z] le match commence le jour x du mois y de l’année z (le mois est un Int)
+        Int [2] Horaire de début e la phase du tournoi
+            [x,y] le match commence à l’heure x, minute y.
+        Objet Match [] listeMatches
+            Liste des matches qui doivent avoir lieu dans cette phase.
+        Int [9] listeDurees
+            Liste des durées en minutes des différents matches et pauses. [durée finale ; durée petite finale ; durée demi-finale ; durée quart de finale ; durée huitième de finale ; durée seizième de finale ; durée trente-deuxième de finale ; durée match de poule ; durée transition]
+        String lieu
+            Pour le moment ne maîtrise qu’une zone géographique.
+        Int nbTerrains
+            Nombre de terrain sur ce lieu.
+
+b.  construction()
+    Construit le planning en ajoutant les équipes sur les terrains disponibles. Si sur un même créneau horaire, deux matches de deux phases finales différentes ont lieu, on décale au créneau horaire suivant. Marche aussi pour distinguer une poule de la première phase finale.
+    i.  Autres méthodes dans l’objet
+        Méthode phasesFinales
+        Méthode conversionMinutes
+        Méthode additionHoraire
+    ii. Objets connectés
+        Objet Match
+            Méthode initDate()
+
+c.  miseAJour()
+        PAS OPTIMISE !! On met à jour le nom des équipes en appliquant la même fonction que "construction" voir construction().
+
+d.  conversionMinutes()
+    On convertit les minutes en format horaire : 6 -> [0,6]
+    i.  Variables d’entrée
+        Int minutes
+
+e.  additionHoraire
+    Permet d’additionner deux horaires en respectant notre nomenclature.
+    i.  Variables d’entrée
+        Int [2] heure1
+        Int [2] heure2
+
+f.  phasesFinales() 
+    Attribue à un type de phase finale un nombre. (Diffère légèrement de celui de tableauxPhasesFinales en ajoutant poule et en différenciant finale de petite finale.
+    Petite finale <-> 1
+    Finale <-> 0
+    Demi-finale <-> 2
+    Quart de finale <-> 3
+    Huitième de finale <-> 4
+    Seizième de finale <-> 5
+    Trente-deuxième de finale <-> 6
+    Poule <-> 7
+    i.  Variables d’entrée
+        String premierTourPhasesFi
+            s« Trente-deuxième de finale », « Seizième de finale », « Huitième de finale », « Quart de finale », « Demi-finale », « Finale », « Petite finale » ou « poule »
+
+*/
+
+
+
+
+
 module.exports = {
 
 
