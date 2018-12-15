@@ -8,7 +8,7 @@ Ci dessous, la description du fonctionnement général de l'algorithme:
 
 
 
-g.	Création tournoi
+1.	Création tournoi
 
 
 On crée un tournoi avec la fonction init() (les arguments de la fonction sont décrit dans le code).
@@ -20,12 +20,12 @@ On crée un tournoi avec la fonction init() (les arguments de la fonction sont d
   e)	La fonction crée ensuite une liste d’objets match (listeMatchesPhasesFinales) dans laquelle elle insère les matches des phases finales sans les noms d’équipes. A terme, elle devrait rajouter les horaires et les lieux (objectif optimisation planning). Ces objets sont envoyés à la BDD.
   
   
-  h.	Modification Poules
+  2.	Modification Poules
 On modifie à ce moment-là les poules afin de répartir au mieux les niveaux grâce à la fonction reaffecterEquipeDansPoule(String nom équipe 1, String nom équipe 2)
 On utilise la fonction validerPoules() qui « fixe » les équipes en remplissant les noms des équipes dans les objets matches de l’objet listeMatchesPoules et elle crée les objets Resultats qui prennent en compte le match et une équipe de ce match (en adéquation avec les tables de la BDD). De plus, la fonction lance une deuxième initialisation de l’objet Poule en lui faisant créer des objets tableauxResultats où seront stockés les résultats de chaque poule plus un objet classement ou seront classées toutes les équipes à la fin de la phase de poule.
 
 
-i.	Rentrer les résultats poules
+3.	Rentrer les résultats poules
 
 
 A chaque résultat de match de poule, on utilise la fonction resultat(Int idMatch, String equipeA, Int scoreEquipe1, String equipeB, Int scoreEquipeB) qui cherche le match dans les deux listes de matches vues précédemment. Cela met ensuite à jour les poules (miseAJourPoules()) ou les phases finales (miseAJourPhasesFinales()).
@@ -36,7 +36,7 @@ A chaque résultat de match de poule, on utilise la fonction resultat(Int idMatc
 L’objet utilise la méthode classer() pour calculer le classement interne.
 
 
-j.	Lancement Phases Finales
+4.	Lancement Phases Finales
 
 
 Une fois les phases de poules finies, il faut lancer les phases finales. Pour cela il faut lancer avec l’objet tournoi la méthode lancementPhasesFinales() ; cela lance la méthode classement() dans l’objet poule qui permet de classer toutes les équipes à la sortie des poules. Cela lance la création d’un objet Classement et lance la méthode, dans ce même objet, init(« classement general poules »,tableauResultats). Cela permet de lancer la méthode classementGeneralApresPoules() automatiquement et d’obtenir un classement.
@@ -44,7 +44,7 @@ Cela lance aussi la méthode init2(classementALaFinDesPoules, typeRemplissagePha
 On lance ensuite la méthode validerPhasesFinales() dans l’objet tournoi qui permet d’envoyer à la BDD les noms des équipes qualifiées à l’aide de la création d’objet Resultat. 
 
 
-k.	Rentrer les résultats phases finales
+5.	Rentrer les résultats phases finales
 
 
 On rentre les résultats comme pour les poules. Elle met à jours les tableaux avec miseAJourPhasesFinales().
