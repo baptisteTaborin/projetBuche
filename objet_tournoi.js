@@ -1,4 +1,4 @@
-/*1.    Tournoi 
+/*
  * 
 Objet principal, concentre toutes les informations et les méthodes principales.
 
@@ -198,37 +198,6 @@ comment sélectionner les équipes à la fin des poules.
                 matchPoule.init(lieux, nom, "Poule",listeDurees);
                 this.listeMatchesPoules.push(matchPoule);
 
-                const options = {
-                    hostname: 'localhost',
-                    port: 3000,
-                    path: '/matches/new/algo/',
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': "application/json",
-                        'charset' : "utf-8",
-                    }
-                  };
-                  
-                  const req = http.request(options, (res) => {
-                    console.log("STATUS: " + res.statusCode);
-                    console.log("HEADERS: " + JSON.stringify(res.headers));
-                    res.setEncoding('utf8');
-                    res.on('data', (chunk) => {
-                      console.log("BODY: " + chunk);
-                      matchPhaseFinale.id = chunk.id_match;
-                    });
-                    res.on('end', () => {
-                      console.log('No more data in response.');
-                    });
-                  });
-                  
-                  req.on('error', (e) => {
-                    console.error("problem with request: " + e.message);
-                  });
-                  
-                  // write data to request body
-                  req.write(JSON.stringify(matchPoule));
-                  req.end();
             }
             
 
@@ -266,37 +235,6 @@ comment sélectionner les équipes à la fin des poules.
 
                     this.listeMatchesPhasesFinales.push(matchPhaseFinale);
 
-                    const options = {
-                        hostname: 'localhost',
-                        port: 3000,
-                        path: '/matches/new/algo/',
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': "application/json",
-                            'charset' : "utf-8",
-                        }
-                      };
-                      
-                      const req = http.request(options, (res) => {
-                        console.log("STATUS: " + res.statusCode);
-                        console.log("HEADERS: " + JSON.stringify(res.headers));
-                        res.setEncoding('utf8');
-                        res.on('data', (chunk) => {
-                          console.log("BODY: " + chunk);
-                          matchPhaseFinale.id = chunk.id_match;
-                        });
-                        res.on('end', () => {
-                          console.log('No more data in response.');
-                        });
-                      });
-                      
-                      req.on('error', (e) => {
-                        console.error("problem with request: " + e.message);
-                      });
-                      
-                      // write data to request body
-                      req.write(JSON.stringify(matchPhaseFinale));
-                      req.end();
                 }
             }
             var matchPetiteFinale= Object.create(match);
@@ -325,39 +263,6 @@ comment sélectionner les équipes à la fin des poules.
                         var objResultatB = Object.create(resultat);
                         objResultatA.init(this.listeMatchesPoules[rangMatchPoule].id,equipeA);
                         objResultatB.init(this.listeMatchesPoules[rangMatchPoule].id,equipeB);
-
-                        const options = {
-                            hostname: 'localhost',
-                            port: 3000,
-                            path: '/resultats/new/algo/',
-                            method: 'PUT',
-                            headers: {
-                                'Content-Type': "application/json",
-                                'charset' : "utf-8",
-                            }
-                          };
-                          
-                          const req = http.request(options, (res) => {
-                            console.log("STATUS: " + res.statusCode);
-                            console.log("HEADERS: " + JSON.stringify(res.headers));
-                            res.setEncoding('utf8');
-                            res.on('data', (chunk) => {
-                              console.log("BODY: " + chunk);
-                            });
-                            res.on('end', () => {
-                              console.log('No more data in response.');
-                            });
-                          });
-                          
-                          req.on('error', (e) => {
-                            console.error("problem with request: $" + e.message);
-                          });
-                          
-                          // write data to request body
-                          req.write(JSON.stringify(objResultatA));
-                          req.write(JSON.stringify(objResultatB));
-                          req.end();
-
 
                         rangMatchPoule+=1;
                     }
@@ -388,38 +293,6 @@ comment sélectionner les équipes à la fin des poules.
                 objResultatA.init(this.listeMatchesPhasesFinales[(w-1)/2].id,equipeA);
                 objResultatB.init(this.listeMatchesPhasesFinales[(w-1)/2].id,equipeB);
 
-                const options = {
-                    hostname: 'localhost',
-                    port: 3000,
-                    path: '/resultats/new/algo/',
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': "application/json",
-                        'charset' : "utf-8",
-                    }
-                    };
-                    
-                    const req = http.request(options, (res) => {
-                        console.log("STATUS: " + res.statusCode);
-                        console.log("HEADERS: " + JSON.stringify(res.headers));
-                        res.setEncoding('utf8');
-                        res.on('data', (chunk) => {
-                          console.log("BODY: " + chunk);
-                          matchPhaseFinale.id = chunk.id_match;
-                        });
-                        res.on('end', () => {
-                          console.log('No more data in response.');
-                        });
-                      });
-                      
-                      req.on('error', (e) => {
-                        console.error("problem with request: " + e.message);
-                      });
-                    
-                    // write data to request body
-                    req.write(JSON.stringify(objResultatA));
-                    req.write(JSON.stringify(objResultatB));
-                    req.end();
             }
         },
         // lit la liste des matches de phases finales, si l'un est fini, il renvoit le résultat dans l'objet tournoi phases finales pour mettre à jour le tableau et récupère le nom des équipes pour les prochaines phases.
@@ -439,38 +312,6 @@ comment sélectionner les équipes à la fin des poules.
                         
                     objResultat.init(this.listeMatchesPhasesFinales[j+compteur].id,this.listeMatchesPhasesFinales[j].classement[0][0]);
 
-                    const options = {
-                        hostname: 'localhost',
-                        port: 3000,
-                        path: '/resultats/new/algo/',
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': "application/json",
-                            'charset' : "utf-8",
-                        }
-                        };
-                        
-                        const req = http.request(options, (res) => {
-                            console.log("STATUS: " + res.statusCode);
-                            console.log("HEADERS: " + JSON.stringify(res.headers));
-                            res.setEncoding('utf8');
-                            res.on('data', (chunk) => {
-                              console.log("BODY: " + chunk);
-                              matchPhaseFinale.id = chunk.id_match;
-                            });
-                            res.on('end', () => {
-                              console.log('No more data in response.');
-                            });
-                          });
-                          
-                          req.on('error', (e) => {
-                            console.error("problem with request: " + e.message);
-                          });
-                        
-                        // write data to request body
-                        req.write(JSON.stringify(objResultat));
-                        req.end();
-
                     this.listeMatchesPhasesFinales[j].statut = "enregistre";
                 }
                 if (j%2 ===1){
@@ -487,39 +328,6 @@ comment sélectionner les équipes à la fin des poules.
                         
                 objResultatA.init(this.listeMatchesPhasesFinales[tailleListe-1].id,this.listeMatchesPhasesFinales[tailleListe-4].classement[1][0]);
                 objResultatB.init(this.listeMatchesPhasesFinales[tailleListe-1].id,this.listeMatchesPhasesFinales[tailleListe-3].classement[1][0]);
-
-                const options = {
-                    hostname: 'localhost',
-                    port: 3000,
-                    path: '/resultats/new/algo/',
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': "application/json",
-                        'charset' : "utf-8",
-                    }
-                    };
-                    
-                    const req = http.request(options, (res) => {
-                        console.log("STATUS: " + res.statusCode);
-                        console.log("HEADERS: " + JSON.stringify(res.headers));
-                        res.setEncoding('utf8');
-                        res.on('data', (chunk) => {
-                          console.log("BODY: " + chunk);
-                          matchPhaseFinale.id = chunk.id_match;
-                        });
-                        res.on('end', () => {
-                          console.log('No more data in response.');
-                        });
-                      });
-                      
-                      req.on('error', (e) => {
-                        console.error("problem with request: " + e.message);
-                      });
-                    
-                    // write data to request body
-                    req.write(JSON.stringify(objResultatA));
-                    req.write(JSON.stringify(objResultatB));
-                    req.end();
             
             }
             if (this.listeMatchesPhasesFinales[tailleListe-1].statut === "fini"){
